@@ -586,3 +586,115 @@ textarea{
 
     transform:none;
 }
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 768px){
+
+    body{
+
+        padding:20px 12px;
+    }
+
+
+    h1{
+
+        font-size:26px;
+
+        letter-spacing:2px;
+
+        margin-bottom:30px;
+    }
+
+
+    /* 入力欄縦並び */
+
+    .controls{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:8px;
+
+        margin-bottom:25px;
+    }
+
+
+    .filters{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:8px;
+
+        margin-bottom:25px;
+    }
+
+
+    input,
+    select,
+    button{
+
+        width:100%;
+
+        box-sizing:border-box;
+
+        margin:0;
+    }
+
+
+    /* 棚 */
+
+    .shelf{
+
+        min-height:170px;
+
+        padding:14px 8px 5px 8px;
+
+        gap:2px;
+    }
+
+
+    /* 本小さく */
+
+    .book{
+
+        width:22px;
+
+        height:150px;
+
+        font-size:9px;
+    }
+
+
+    /* モーダル */
+
+    .modalContent{
+
+        width:90vw;
+
+        padding:20px;
+    }
+
+
+    #modalTitle{
+
+        font-size:22px;
+    }
+
+
+    textarea{
+
+        height:90px;
+    }
+
+
+    .modalButtons{
+
+        flex-direction:column;
+    }
+}
