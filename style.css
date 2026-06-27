@@ -7,6 +7,7 @@
 body{
     margin:0;
     padding:50px 70px;
+    box-sizing:border-box;
 
     background:#161210;
 
@@ -132,6 +133,7 @@ input:hover{
     align-items:flex-end;
 
     width:min(1200px,90vw);
+    max-width: 100vw;
 
     margin:auto;
 
@@ -599,6 +601,7 @@ textarea{
     body{
         padding:12px 8px; /* ←ここが重要 */
         text-align:left;
+        overflow-x: hidden;
     }
 
     .shelf{
@@ -612,6 +615,3 @@ textarea{
     }
 }
 
-html, body{
-    overflow-x:hidden;
-}
