@@ -1,0 +1,593 @@
+/* ===========================
+   GLOBAL
+=========================== */
+
+body{
+    margin:0;
+    padding:50px 70px;
+
+    background:#161210;
+
+    color:#e5ddd2;
+
+    text-align:center;
+
+    font-family:
+        "Hiragino Mincho ProN",
+        "Yu Mincho",
+        serif;
+
+    letter-spacing:0.3px;
+}
+
+
+/* ===========================
+   TYPOGRAPHY
+=========================== */
+
+h1{
+    margin-bottom:55px;
+
+    font-size:44px;
+
+    font-weight:400;
+
+    letter-spacing:4px;
+
+    color:#d8c8b2;
+
+    text-transform:uppercase;
+}
+
+h2{
+    margin-top:60px;
+    margin-bottom:20px;
+
+    font-size:17px;
+
+    font-weight:400;
+
+    color:#9e8d79;
+
+    letter-spacing:3px;
+}
+
+
+/* ===========================
+   CONTROLS
+=========================== */
+
+.controls{
+    margin-bottom:60px;
+}
+
+.filters{
+    margin-bottom:45px;
+}
+
+input,
+select,
+button{
+
+    background:#211a16;
+
+    color:#d7cdbf;
+
+    border:none;
+
+    border-bottom:
+        1px solid #5f4c3a;
+
+    padding:12px 14px;
+
+    margin:0 4px;
+
+    font-size:14px;
+
+    font-family:inherit;
+
+    outline:none;
+
+    transition:0.18s;
+}
+
+input{
+    width:240px;
+}
+
+input::placeholder{
+    color:#6d6258;
+}
+
+
+button{
+    cursor:pointer;
+}
+
+button:hover,
+select:hover,
+input:hover{
+    background:#261f1b;
+}
+
+
+/* ===========================
+   SHELF
+=========================== */
+
+.shelf{
+
+    position:relative;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:2px;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    width:min(1200px,90vw);
+
+    margin:auto;
+
+    min-height:260px;
+
+    padding:22px 18px 6px 18px;
+
+    background:#1d1713;
+
+    border-top:
+        1px solid rgba(201,170,113,0.06);
+
+    box-shadow:
+        inset 0 12px 18px rgba(255,255,255,0.01),
+        inset 0 -20px 24px rgba(0,0,0,0.28);
+
+    margin-bottom:65px;
+}
+
+
+/* wooden plank */
+
+.shelf::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-26px;
+
+    width:100%;
+    height:26px;
+
+    background:#3b291d;
+
+    box-shadow:
+        inset 0 2px 2px rgba(255,255,255,0.04),
+        0 8px 12px rgba(0,0,0,0.25);
+}
+
+
+/* drag target */
+
+.shelf.hovered{
+    background:#221a16;
+}
+
+
+/* ===========================
+   BOOK
+=========================== */
+
+.book{
+
+    position:relative;
+
+    width:27px;              /* thin */
+
+    height:170px;
+
+    padding-top:12px;
+    padding-right:3px;
+
+    box-sizing:border-box;
+
+    writing-mode:vertical-rl;
+
+    text-orientation:mixed;
+
+    display:flex;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    line-height:1.05;
+
+    color:#f3ede6;
+
+    cursor:pointer;
+
+    transition:0.12s linear;
+
+    border-radius:0;
+
+    user-select:none;
+}
+
+.book.latin{
+
+    writing-mode:horizontal-tb;
+
+    padding:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+
+/* rotate text like western spine */
+
+.book.latin span{
+
+    display:block;
+
+    transform:rotate(90deg);
+
+    white-space:nowrap;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    font-family:
+      Georgia,
+      "Times New Roman",
+      serif;
+}
+
+/* subtle texture */
+
+.book::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.02) 0px,
+        rgba(255,255,255,0.02) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+}
+
+
+/* brass line */
+
+.book::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:2px;
+    top:0;
+
+    width:1px;
+    height:100%;
+
+    background:
+      rgba(176,145,94,0.45);
+}
+
+
+/* hover minimal */
+
+.book:hover{
+    transform:translateY(-2px);
+}
+
+
+/* dragging */
+
+.book.dragging{
+    opacity:0.4;
+}
+
+
+
+/* ===========================
+   BOOK COLORS
+   muted cloth binding style
+=========================== */
+
+.sf{
+    background:#41586b;
+}
+
+.mystery{
+    background:#3c5e32;
+}
+
+.history{
+    background:#564333;
+}
+
+.philosophy{
+    background:#3f364b;
+}
+
+.manga{
+    background:#32473d;
+}
+
+.horror{
+    background:#593b6d;
+}
+
+.other{
+    background:#434343;
+}
+
+
+/* ===========================
+   MODAL BACKDROP
+=========================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+        rgba(0,0,0,0.55);
+
+    backdrop-filter:blur(3px);
+}
+
+.hidden{
+    display:none;
+}
+
+
+/* ===========================
+   MODAL CARD
+=========================== */
+
+.modalContent{
+
+    width:470px;
+
+    background:#1b1613;
+
+    border:
+        1px solid rgba(176,145,94,0.18);
+
+    padding:38px;
+
+    text-align:left;
+
+    border-radius:0;
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,0.35);
+
+    animation:fadeIn 0.18s ease;
+}
+
+
+/* modal animation */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+
+/* ===========================
+   MODAL TEXT
+=========================== */
+
+#modalTitle{
+
+    font-size:32px;
+
+    font-weight:400;
+
+    color:#dfd2bf;
+
+    margin-bottom:20px;
+
+    padding-bottom:14px;
+
+    border-bottom:
+      1px solid rgba(176,145,94,0.12);
+}
+
+
+#modalGenre,
+#modalStatus{
+
+    margin:8px 0;
+
+    color:#9f907f;
+
+    font-size:15px;
+}
+
+
+
+/* ===========================
+   TEXTAREA
+=========================== */
+
+textarea{
+
+    width:100%;
+
+    height:130px;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    box-sizing:border-box;
+
+    resize:none;
+
+    border:none;
+
+    border-left:
+      2px solid rgba(176,145,94,0.3);
+
+    background:#130f0d;
+
+    color:#e9dfd3;
+
+    font-size:14px;
+
+    font-family:inherit;
+
+    outline:none;
+}
+
+#authorEdit{
+
+    width:100%;
+
+    padding:12px;
+
+    background:#130f0d;
+
+    color:#e9dfd3;
+
+    border:none;
+
+    border-left:
+      2px solid rgba(176,145,94,0.3);
+
+    margin-bottom:15px;
+
+    font-family:inherit;
+
+    outline:none;
+
+    box-sizing:border-box;
+}
+
+
+
+/* ===========================
+   MODAL BUTTONS
+=========================== */
+
+.modalButtons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:22px;
+}
+
+
+.modalButtons button{
+
+    flex:1;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:0;
+
+    font-size:13px;
+
+    font-family:inherit;
+
+    transition:0.12s;
+}
+
+
+/* individual buttons */
+
+#saveMemo{
+
+    background:#3f2f23;
+
+    color:#d9c8b3;
+
+    border:
+      1px solid rgba(176,145,94,0.15);
+}
+
+
+#deleteBook{
+
+    background:#2e1f1f;
+
+    color:#c9b6a5;
+
+    border:
+      1px solid rgba(120,80,80,0.15);
+}
+
+
+#closeModal{
+
+    background:#221c18;
+
+    color:#b9ab9c;
+
+    border:
+      1px solid rgba(255,255,255,0.04);
+}
+
+
+/* button hover */
+
+.modalButtons button:hover{
+
+    background:#2a221d;
+
+    transform:none;
+}
+
