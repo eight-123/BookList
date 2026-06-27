@@ -1,12 +1,4 @@
-html, body{
-    margin:0;
-    padding:0;
-    overflow-x:hidden; /* ←横ズレ完全防止 */
-}
 
-*{
-    box-sizing:border-box;
-}
 
 /* ===========================
    GLOBAL
@@ -601,3 +593,25 @@ textarea{
     transform:none;
 }
 
+
+@media (max-width:768px){
+
+    body{
+        padding:12px 8px; /* ←ここが重要 */
+        text-align:left;
+    }
+
+    .shelf{
+        width:100%;
+        margin:0;
+    }
+
+    input, select, button{
+        width:100%;
+        margin:0;
+    }
+}
+
+html, body{
+    overflow-x:hidden;
+}
