@@ -68,6 +68,9 @@ function genreClass(genre){
 
   if(genre==="漫画")
     return "manga";
+    
+  if(genre==="ホラー")
+  return "horror";
 
   return "other";
 }
