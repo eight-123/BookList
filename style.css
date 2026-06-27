@@ -7,7 +7,6 @@ body{
     padding:50px 70px;
 
     background:#161210;
-
     color:#e5ddd2;
 
     text-align:center;
@@ -18,6 +17,8 @@ body{
         serif;
 
     letter-spacing:0.3px;
+
+    overflow-x:hidden; /* ← 横ズレ防止 */
 }
 
 
@@ -27,28 +28,19 @@ body{
 
 h1{
     margin-bottom:55px;
-
     font-size:44px;
-
     font-weight:400;
-
     letter-spacing:4px;
-
     color:#d8c8b2;
-
     text-transform:uppercase;
 }
 
 h2{
     margin-top:60px;
     margin-bottom:20px;
-
     font-size:17px;
-
     font-weight:400;
-
     color:#9e8d79;
-
     letter-spacing:3px;
 }
 
@@ -70,13 +62,10 @@ select,
 button{
 
     background:#211a16;
-
     color:#d7cdbf;
 
     border:none;
-
-    border-bottom:
-        1px solid #5f4c3a;
+    border-bottom:1px solid #5f4c3a;
 
     padding:12px 14px;
 
@@ -98,7 +87,6 @@ input{
 input::placeholder{
     color:#6d6258;
 }
-
 
 button{
     cursor:pointer;
@@ -139,8 +127,7 @@ input:hover{
 
     background:#1d1713;
 
-    border-top:
-        1px solid rgba(201,170,113,0.06);
+    border-top:1px solid rgba(201,170,113,0.06);
 
     box-shadow:
         inset 0 12px 18px rgba(255,255,255,0.01),
@@ -150,17 +137,13 @@ input:hover{
 }
 
 
-/* wooden plank */
-
+/* 木板 */
 .shelf::after{
 
     content:"";
-
     position:absolute;
-
     left:0;
     bottom:-26px;
-
     width:100%;
     height:26px;
 
@@ -172,8 +155,7 @@ input:hover{
 }
 
 
-/* drag target */
-
+/* hover */
 .shelf.hovered{
     background:#221a16;
 }
@@ -187,8 +169,7 @@ input:hover{
 
     position:relative;
 
-    width:27px;              /* thin */
-
+    width:27px;
     height:170px;
 
     padding-top:12px;
@@ -197,21 +178,17 @@ input:hover{
     box-sizing:border-box;
 
     writing-mode:vertical-rl;
-
     text-orientation:mixed;
 
     display:flex;
 
     justify-content:flex-start;
-
     align-items:center;
 
     overflow:hidden;
 
     font-size:12px;
-
     font-weight:500;
-
     line-height:1.05;
 
     color:#f3ede6;
@@ -220,8 +197,6 @@ input:hover{
 
     transition:0.12s linear;
 
-    border-radius:0;
-
     user-select:none;
 }
 
@@ -229,17 +204,13 @@ input:hover{
 
     writing-mode:horizontal-tb;
 
-    padding:0;
-
     display:flex;
 
     justify-content:center;
-
     align-items:center;
+
+    padding:0;
 }
-
-
-/* rotate text like western spine */
 
 .book.latin span{
 
@@ -259,232 +230,122 @@ input:hover{
       serif;
 }
 
-/* subtle texture */
 
+/* texture */
 .book::before{
 
     content:"";
-
     position:absolute;
-
     left:0;
     top:0;
-
     width:100%;
     height:100%;
 
-    background:
-      repeating-linear-gradient(
+    background:repeating-linear-gradient(
         to bottom,
         rgba(255,255,255,0.02) 0px,
         rgba(255,255,255,0.02) 1px,
         transparent 1px,
         transparent 4px
-      );
+    );
 }
 
 
-/* brass line */
-
+/* spine line */
 .book::after{
 
     content:"";
-
     position:absolute;
-
     left:2px;
     top:0;
-
     width:1px;
     height:100%;
-
-    background:
-      rgba(176,145,94,0.45);
+    background:rgba(176,145,94,0.45);
 }
 
-
-/* hover minimal */
 
 .book:hover{
     transform:translateY(-2px);
 }
-
-
-/* dragging */
 
 .book.dragging{
     opacity:0.4;
 }
 
 
-
 /* ===========================
-   BOOK COLORS
-   muted cloth binding style
+   COLORS
 =========================== */
 
-.sf{
-    background:#35424d;
-}
-
-.mystery{
-    background:#412828;
-}
-
-.history{
-    background:#564333;
-}
-
-.philosophy{
-    background:#3f364b;
-}
-
-.manga{
-    background:#32473d;
-}
-
-.other{
-    background:#434343;
-}
+.sf{background:#35424d;}
+.mystery{background:#412828;}
+.history{background:#564333;}
+.philosophy{background:#3f364b;}
+.manga{background:#32473d;}
+.other{background:#434343;}
 
 
 /* ===========================
-   MODAL BACKDROP
+   MODAL
 =========================== */
 
 .modal{
 
     position:fixed;
-
     inset:0;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
-    background:
-        rgba(0,0,0,0.55);
-
+    background:rgba(0,0,0,0.55);
     backdrop-filter:blur(3px);
 }
 
-.hidden{
-    display:none;
-}
-
-
-/* ===========================
-   MODAL CARD
-=========================== */
+.hidden{display:none;}
 
 .modalContent{
 
-    width:470px;
+    width:min(470px,90vw); /* ←ズレ防止ここ重要 */
 
     background:#1b1613;
 
-    border:
-        1px solid rgba(176,145,94,0.18);
+    border:1px solid rgba(176,145,94,0.18);
 
     padding:38px;
 
     text-align:left;
 
-    border-radius:0;
-
-    box-shadow:
-        0 18px 35px rgba(0,0,0,0.35);
+    box-shadow:0 18px 35px rgba(0,0,0,0.35);
 
     animation:fadeIn 0.18s ease;
 }
 
-
-/* modal animation */
-
 @keyframes fadeIn{
-
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{opacity:0;transform:translateY(8px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
 
-
-/* ===========================
-   MODAL TEXT
-=========================== */
+/* modal text */
 
 #modalTitle{
-
     font-size:32px;
-
-    font-weight:400;
-
-    color:#dfd2bf;
-
     margin-bottom:20px;
-
+    border-bottom:1px solid rgba(176,145,94,0.12);
     padding-bottom:14px;
-
-    border-bottom:
-      1px solid rgba(176,145,94,0.12);
 }
-
 
 #modalGenre,
 #modalStatus{
-
     margin:8px 0;
-
     color:#9f907f;
-
-    font-size:15px;
 }
 
 
+/* inputs */
 
-/* ===========================
-   TEXTAREA
-=========================== */
-
-textarea{
-
-    width:100%;
-
-    height:130px;
-
-    margin-top:20px;
-
-    padding:14px;
-
-    box-sizing:border-box;
-
-    resize:none;
-
-    border:none;
-
-    border-left:
-      2px solid rgba(176,145,94,0.3);
-
-    background:#130f0d;
-
-    color:#e9dfd3;
-
-    font-size:14px;
-
-    font-family:inherit;
-
-    outline:none;
-}
-
+textarea,
 #authorEdit{
 
     width:100%;
@@ -497,8 +358,7 @@ textarea{
 
     border:none;
 
-    border-left:
-      2px solid rgba(176,145,94,0.3);
+    border-left:2px solid rgba(176,145,94,0.3);
 
     margin-bottom:15px;
 
@@ -510,191 +370,84 @@ textarea{
 }
 
 
-
-/* ===========================
-   MODAL BUTTONS
-=========================== */
+/* buttons */
 
 .modalButtons{
-
     display:flex;
-
     gap:10px;
-
     margin-top:22px;
 }
 
-
 .modalButtons button{
-
     flex:1;
-
     padding:12px;
-
-    border:none;
-
-    border-radius:0;
-
-    font-size:13px;
-
-    font-family:inherit;
-
-    transition:0.12s;
 }
 
-
-/* individual buttons */
-
-#saveMemo{
-
-    background:#3f2f23;
-
-    color:#d9c8b3;
-
-    border:
-      1px solid rgba(176,145,94,0.15);
-}
-
-
-#deleteBook{
-
-    background:#2e1f1f;
-
-    color:#c9b6a5;
-
-    border:
-      1px solid rgba(120,80,80,0.15);
-}
-
-
-#closeModal{
-
-    background:#221c18;
-
-    color:#b9ab9c;
-
-    border:
-      1px solid rgba(255,255,255,0.04);
-}
-
-
-/* button hover */
-
-.modalButtons button:hover{
-
-    background:#2a221d;
-
-    transform:none;
-}
 
 /* ===========================
-   MOBILE
+   MOBILE FIX（ここが本命）
 =========================== */
 
-@media (max-width: 768px){
+@media (max-width:768px){
 
     body{
-
-        padding:20px 12px;
+        padding:10px;
+        text-align:left; /* ←中心ズレ防止 */
     }
 
-
     h1{
-
+        text-align:center;
         font-size:26px;
-
-        letter-spacing:2px;
-
         margin-bottom:30px;
     }
 
-
-    /* 入力欄縦並び */
-
-    .controls{
-
-        display:flex;
-
-        flex-direction:column;
-
-        gap:8px;
-
-        margin-bottom:25px;
-    }
-
-
+    .controls,
     .filters{
-
+        width:100%;
         display:flex;
-
         flex-direction:column;
-
         gap:8px;
-
-        margin-bottom:25px;
     }
-
 
     input,
     select,
     button{
-
         width:100%;
-
-        box-sizing:border-box;
-
         margin:0;
+        box-sizing:border-box;
     }
-
-
-    /* 棚 */
 
     .shelf{
 
-        min-height:170px;
+        width:100%;
 
-        padding:14px 8px 5px 8px;
+        flex-wrap:nowrap; /* ←横崩れ防止 */
 
-        gap:2px;
+        overflow-x:auto;
+
+        justify-content:flex-start;
+
+        gap:3px;
+
+        min-height:160px;
     }
-
-
-    /* 本小さく */
 
     .book{
-
-        width:22px;
-
-        height:150px;
-
-        font-size:9px;
+        width:16px;
+        height:110px;
+        font-size:8px;
     }
-
-
-    /* モーダル */
 
     .modalContent{
-
-        width:90vw;
-
-        padding:20px;
+        width:calc(100vw - 20px);
+        padding:14px;
     }
-
-
-    #modalTitle{
-
-        font-size:22px;
-    }
-
 
     textarea{
-
         height:90px;
     }
 
-
     .modalButtons{
-
         flex-direction:column;
     }
 }
