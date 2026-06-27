@@ -1,9 +1,24 @@
 /* ===========================
+   RESET（ズレ対策の最重要）
+=========================== */
+
+html, body{
+    margin:0;
+    padding:0;
+    overflow-x:hidden; /* ←横ズレ完全防止 */
+}
+
+*{
+    box-sizing:border-box;
+}
+
+
+/* ===========================
    GLOBAL
 =========================== */
 
 body{
-    margin:0;
+
     padding:50px 70px;
 
     background:#161210;
@@ -17,8 +32,6 @@ body{
         serif;
 
     letter-spacing:0.3px;
-
-    overflow-x:hidden; /* ← 横ズレ防止 */
 }
 
 
@@ -137,13 +150,17 @@ input:hover{
 }
 
 
-/* 木板 */
+/* wooden plank */
+
 .shelf::after{
 
     content:"";
+
     position:absolute;
+
     left:0;
     bottom:-26px;
+
     width:100%;
     height:26px;
 
@@ -156,6 +173,7 @@ input:hover{
 
 
 /* hover */
+
 .shelf.hovered{
     background:#221a16;
 }
@@ -175,8 +193,6 @@ input:hover{
     padding-top:12px;
     padding-right:3px;
 
-    box-sizing:border-box;
-
     writing-mode:vertical-rl;
     text-orientation:mixed;
 
@@ -189,6 +205,7 @@ input:hover{
 
     font-size:12px;
     font-weight:500;
+
     line-height:1.05;
 
     color:#f3ede6;
@@ -200,6 +217,8 @@ input:hover{
     user-select:none;
 }
 
+
+/* western title */
 .book.latin{
 
     writing-mode:horizontal-tb;
@@ -232,12 +251,16 @@ input:hover{
 
 
 /* texture */
+
 .book::before{
 
     content:"";
+
     position:absolute;
+
     left:0;
     top:0;
+
     width:100%;
     height:100%;
 
@@ -252,17 +275,24 @@ input:hover{
 
 
 /* spine line */
+
 .book::after{
 
     content:"";
+
     position:absolute;
+
     left:2px;
     top:0;
+
     width:1px;
     height:100%;
+
     background:rgba(176,145,94,0.45);
 }
 
+
+/* hover */
 
 .book:hover{
     transform:translateY(-2px);
@@ -295,18 +325,23 @@ input:hover{
     inset:0;
 
     display:flex;
+
     justify-content:center;
     align-items:center;
 
     background:rgba(0,0,0,0.55);
+
     backdrop-filter:blur(3px);
 }
 
 .hidden{display:none;}
 
+
+/* card */
+
 .modalContent{
 
-    width:min(470px,90vw); /* ←ズレ防止ここ重要 */
+    width:min(470px,90vw);
 
     background:#1b1613;
 
@@ -330,10 +365,14 @@ input:hover{
 /* modal text */
 
 #modalTitle{
+
     font-size:32px;
+
     margin-bottom:20px;
-    border-bottom:1px solid rgba(176,145,94,0.12);
+
     padding-bottom:14px;
+
+    border-bottom:1px solid rgba(176,145,94,0.12);
 }
 
 #modalGenre,
@@ -365,8 +404,6 @@ textarea,
     font-family:inherit;
 
     outline:none;
-
-    box-sizing:border-box;
 }
 
 
@@ -385,14 +422,14 @@ textarea,
 
 
 /* ===========================
-   MOBILE FIX（ここが本命）
+   MOBILE FIX（完全安定版）
 =========================== */
 
 @media (max-width:768px){
 
     body{
-        padding:10px;
-        text-align:left; /* ←中心ズレ防止 */
+        padding:8px;
+        text-align:left;
     }
 
     h1{
@@ -414,14 +451,13 @@ textarea,
     button{
         width:100%;
         margin:0;
-        box-sizing:border-box;
     }
 
     .shelf{
 
         width:100%;
 
-        flex-wrap:nowrap; /* ←横崩れ防止 */
+        flex-wrap:nowrap;
 
         overflow-x:auto;
 
